@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kristen Forti</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f6f2ec;
+    --paper-warm: #efe9df;
+    --ink: #2a2622;
+    --ink-soft: #5a5249;
+    --ink-faint: #9c9388;
+    --rule: rgba(42, 38, 34, 0.12);
+    --rule-soft: rgba(42, 38, 34, 0.06);
+    --accent: #8a5a3b;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    font-size: 17px;
+    line-height: 1.7;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.5;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  }
+
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 32px;
+    position: relative;
+    z-index: 2;
+  }
+  .wrap-wide {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 32px;
+    position: relative;
+    z-index: 2;
+  }
+
+  nav {
+    padding: 32px 0;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+  }
+  .nav-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 18px;
+    letter-spacing: -0.01em;
+  }
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    color: var(--ink-soft);
+  }
+  .nav-links a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .nav-links a:hover { color: var(--ink); }
+  @media (max-width: 600px) {
+    .nav-links { gap: 18px; font-size: 12px; }
+  }
+
+  /* HERO */
+  .hero {
+    padding: 60px 0 100px;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+  @media (max-width: 860px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+    .hero { padding: 30px 0 70px; }
+  }
+
+  .hello {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 19px;
+    color: var(--ink-soft);
+    margin-bottom: 28px;
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: clamp(40px, 5.5vw, 62px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 36px;
+  }
+  h1 .line {
+    display: block;
+  }
+  .lede {
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    margin-bottom: 24px;
+    max-width: 560px;
+  }
+  .lede strong { color: var(--ink); font-weight: 500; }
+  .lede:last-of-type { margin-bottom: 0; }
+
+  /* Photo: smaller, aligned higher, floating animation */
+  .photo-col {
+    padding-top: 56px;
+  }
+  @media (max-width: 860px) {
+    .photo-col { padding-top: 0; }
+  }
+  .photo {
+    aspect-ratio: 5 / 4;
+    max-width: 320px;
+    background: linear-gradient(145deg, #ece4d6 0%, #e0d6c4 100%);
+    border-radius: 3px;
+    position: relative;
+    overflow: hidden;
+    box-shadow:
+      0 1px 2px rgba(42, 38, 34, 0.04),
+      0 8px 24px rgba(42, 38, 34, 0.08),
+      0 24px 60px rgba(42, 38, 34, 0.06);
+    animation: float 6s ease-in-out infinite;
+  }
+  .photo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(-0.3deg); }
+    50% { transform: translateY(-10px) rotate(0.3deg); }
+  }
+
+  section {
+    padding: 80px 0;
+  }
+  .section-tag {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 28px;
+    font-weight: 500;
+  }
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: clamp(30px, 4vw, 40px);
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    margin-bottom: 40px;
+    max-width: 620px;
+  }
+
+  p {
+    margin-bottom: 22px;
+    color: var(--ink-soft);
+    max-width: 620px;
+  }
+  p strong { color: var(--ink); font-weight: 500; }
+
+  .divider {
+    height: 1px;
+    background: var(--rule);
+    margin: 0 auto;
+    max-width: 760px;
+  }
+
+  /* About */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+  @media (max-width: 720px) {
+    .about-grid { grid-template-columns: 1fr; gap: 32px; }
+  }
+  .about-left p { max-width: none; }
+
+  .quick-facts {
+    background: var(--paper-warm);
+    padding: 32px;
+    border-radius: 2px;
+  }
+  .fact {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--rule-soft);
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 16px;
+    font-size: 14px;
+  }
+  .fact:last-child { border-bottom: none; }
+  .fact-key {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    padding-top: 2px;
+  }
+  .fact-val { color: var(--ink); }
+
+  /* Belief */
+  .belief {
+    background: var(--paper-warm);
+    padding: 100px 0;
+  }
+  .belief h2 { margin-bottom: 32px; }
+  .belief-intro {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 1.5;
+    color: var(--ink);
+    margin-bottom: 48px;
+    max-width: 720px;
+    letter-spacing: -0.005em;
+  }
+
+  .belief-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 48px;
+  }
+  @media (max-width: 720px) {
+    .belief-grid { grid-template-columns: 1fr; }
+  }
+  .belief-card {
+    background: var(--paper);
+    border-radius: 4px;
+    padding: 32px;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .belief-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(42, 38, 34, 0.06);
+  }
+  .belief-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    color: var(--accent);
+    margin-bottom: 14px;
+    letter-spacing: 0.02em;
+  }
+  .belief-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 1.2;
+    margin-bottom: 14px;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .belief-card p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    margin-bottom: 0;
+    max-width: none;
+  }
+  .belief-sig {
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: var(--ink-faint);
+    letter-spacing: 0.04em;
+    max-width: 720px;
+  }
+
+  /* Cards */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-top: 16px;
+  }
+  @media (max-width: 720px) {
+    .card-grid { grid-template-columns: 1fr; }
+  }
+  .card {
+    padding: 32px;
+    background: var(--paper-warm);
+    border-radius: 2px;
+    transition: transform 0.3s ease;
+  }
+  .card:hover { transform: translateY(-2px); }
+  .card-kicker {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 14px;
+    font-weight: 500;
+  }
+  .card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.2;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+  .card-meta {
+    font-size: 13px;
+    color: var(--ink-faint);
+    margin-bottom: 18px;
+    font-family: 'Cormorant Garamond', serif;
+  }
+  .card p {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin-bottom: 0;
+    max-width: none;
+  }
+
+  /* Substack live feed */
+  .substack-feed {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 16px;
+    margin-bottom: 32px;
+  }
+  @media (max-width: 860px) {
+    .substack-feed { grid-template-columns: 1fr; }
+  }
+  .feed-loading, .feed-error {
+    grid-column: 1 / -1;
+    padding: 48px 32px;
+    background: var(--paper-warm);
+    border-radius: 4px;
+    text-align: center;
+    color: var(--ink-faint);
+    font-size: 14px;
+    letter-spacing: 0.04em;
+  }
+  .feed-post {
+    background: var(--paper-warm);
+    border-radius: 4px;
+    padding: 28px;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid transparent;
+    position: relative;
+    overflow: hidden;
+  }
+  .feed-post:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(42, 38, 34, 0.08);
+    border-color: rgba(138, 90, 59, 0.2);
+  }
+  .feed-post::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+  .feed-post:hover::before {
+    transform: scaleX(1);
+  }
+  .feed-date {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+    font-weight: 500;
+  }
+  .feed-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.25;
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .feed-snippet {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+    flex: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .feed-read {
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    color: var(--ink-soft);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: auto;
+  }
+  .feed-read .arrow {
+    transition: transform 0.3s ease;
+  }
+  .feed-post:hover .feed-read .arrow {
+    transform: translateX(4px);
+  }
+
+  .substack-footer {
+    text-align: center;
+    padding-top: 8px;
+  }
+  .substack-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 24px;
+    background: var(--ink);
+    color: var(--paper);
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+  .substack-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(42, 38, 34, 0.15);
+  }
+  .substack-cta .arrow {
+    transition: transform 0.3s ease;
+  }
+  .substack-cta:hover .arrow {
+    transform: translateX(4px);
+  }
+
+  /* Books list */
+  .books-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 60px;
+    margin-top: 8px;
+  }
+  @media (max-width: 720px) {
+    .books-list { grid-template-columns: 1fr; gap: 0; }
+  }
+  .book-row {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 20px;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: baseline;
+    transition: opacity 0.3s ease;
+  }
+  .book-row:hover {
+    opacity: 0.7;
+  }
+  .book-num {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+    font-weight: 500;
+    padding-top: 6px;
+  }
+  .book-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.25;
+    color: var(--ink);
+    margin-bottom: 4px;
+    letter-spacing: -0.005em;
+  }
+  .book-author {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: var(--ink-faint);
+    letter-spacing: 0.01em;
+  }
+
+  .work-item {
+    padding: 36px 0;
+    border-bottom: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 48px;
+  }
+  .work-item:last-child { border-bottom: none; }
+  @media (max-width: 720px) {
+    .work-item { grid-template-columns: 1fr; gap: 12px; }
+  }
+  .work-when {
+    font-size: 13px;
+    color: var(--ink-faint);
+    line-height: 1.6;
+  }
+  .work-when strong {
+    display: block;
+    color: var(--ink);
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .work-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 1.25;
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+  }
+  .work-desc {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    margin-bottom: 0;
+    max-width: none;
+  }
+  .work-desc strong { color: var(--ink); }
+
+  /* Contact */
+  .contact {
+    padding: 140px 0;
+    text-align: center;
+  }
+  .contact h2 {
+    margin: 0 auto 48px;
+    max-width: 640px;
+  }
+  .contact-links {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 14px;
+    text-align: left;
+  }
+  .contact-link {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 24px;
+    align-items: baseline;
+    color: var(--ink);
+    text-decoration: none;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--rule);
+    transition: opacity 0.2s ease;
+  }
+  .contact-link:hover { opacity: 0.6; }
+  .contact-link span:first-child {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .contact-link span:last-child {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  footer {
+    padding: 40px 0 60px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--ink-faint);
+    letter-spacing: 0.06em;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap-wide nav-inner">
+    <span class="mark">Kristen Forti</span>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#writing">Writing</a>
+      <a href="#work">Work</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="wrap-wide">
+    <div class="hero-grid">
+      <div>
+        <div class="hello reveal">Hi, I'm Kristen.</div>
+        <h1 class="reveal">
+          <span class="line">Organizer.</span>
+          <span class="line">Creator.</span>
+          <span class="line">Believer in innovation.</span>
+        </h1>
+        <p class="lede reveal">
+          I'm engineering-educated, currently splitting my time between scaling existing
+          systems and building new ones from the ground up.
+        </p>
+        <p class="lede reveal">
+          My focus is on the work that compounds: clean systems, useful infrastructure, and
+          the details that let teams focus on creating the best quality.
+        </p>
+      </div>
+
+      <div class="photo-col">
+        <div class="photo reveal">
+          <img src="kristen-jumping.jpeg" alt="Kristen riding" class="photo-img">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="about">
+  <div class="wrap-wide">
+    <div class="section-tag reveal">01. About</div>
+    <h2 class="reveal">A little background.</h2>
+
+    <div class="about-grid">
+      <div class="about-left reveal">
+        <p>
+          I grew up in the Midwest, around horses, in the barn. There, I learned how to work long
+          days at the early age of thirteen. Horses are twenty-four seven, nonstop. They never
+          take vacations or days off.
+        </p>
+        <p>
+          That work ethic shaped my future. The barn taught me how to be incredibly efficient and
+          maximize every minute of every day.
+        </p>
+        <p>
+          I love engineering, and I love people. Operations is where those two things meet for me.
+          I can't wait to keep optimizing the future, helping enterprises run better, and using
+          good systems to better humanity in the process.
+        </p>
+        <p>
+          Outside of work, I'm still a horse person and a book person. Mostly nonfiction.
+          Technology, philosophy, history, and politics.
+        </p>
+      </div>
+
+      <div class="quick-facts reveal">
+        <div class="fact">
+          <div class="fact-key">Based</div>
+          <div class="fact-val">New York, NY</div>
+        </div>
+        <div class="fact">
+          <div class="fact-key">Trained as</div>
+          <div class="fact-val">Industrial engineer</div>
+        </div>
+        <div class="fact">
+          <div class="fact-key">Day job</div>
+          <div class="fact-val">Operations &amp; systems</div>
+        </div>
+        <div class="fact">
+          <div class="fact-key">Side work</div>
+          <div class="fact-val">Political campaigns &amp; building in code</div>
+        </div>
+        <div class="fact">
+          <div class="fact-key">Holding</div>
+          <div class="fact-val">BTC since 2018</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="belief">
+  <div class="wrap-wide">
+    <div class="section-tag reveal">02. What I believe</div>
+    <h2 class="reveal">Innovation for humanity.</h2>
+    <p class="reveal belief-intro">
+      I'm deeply passionate about innovation and technology. I also believe in preserving what's
+      good, beautiful, lovely, and true. Everything that keeps us human. The best technology, to
+      me, holds both at once.
+    </p>
+
+    <div class="belief-grid">
+      <div class="belief-card reveal">
+        <div class="belief-num">i.</div>
+        <h3>The future is exciting</h3>
+        <p>
+          The future is already here. We are curing cancer, healing disease, building flying
+          cars and rocket ships. Humanity isn't perfect, but humanity is getting so much better.
+          I am excited to see how far we can flourish.
+        </p>
+      </div>
+
+      <div class="belief-card reveal">
+        <div class="belief-num">ii.</div>
+        <h3>True freedom, true ownership</h3>
+        <p>
+          With new technology like blockchain, everyone has access to real freedom and real
+          ownership. Money you actually own. Networks that don't need permission. A new kind of
+          trust that doesn't depend on any institution. That's a huge development for humanity.
+        </p>
+      </div>
+
+      <div class="belief-card reveal">
+        <div class="belief-num">iii.</div>
+        <h3>Innovation needs adopters</h3>
+        <p>
+          A breakthrough only matters when people actually use it. The bridge from invention to
+          adoption is what turns an idea into something the world can lean on. I've always been
+          drawn to the early end of that curve. I bought my first Bitcoin in 2018, and I've been
+          paying close attention to what gets built next ever since.
+        </p>
+      </div>
+
+      <div class="belief-card reveal">
+        <div class="belief-num">iv.</div>
+        <h3>Infrastructure and delivery</h3>
+        <p>
+          I want to spend my career making powerful tools accessible to the people who need
+          them. The infrastructure layer matters, but so does the delivery, the onboarding, the
+          experience of actually getting your hands on the thing. That's where I want to work.
+        </p>
+      </div>
+    </div>
+
+    <div class="belief-sig reveal">New York, 2026.</div>
+  </div>
+</section>
+
+<section id="writing">
+  <div class="wrap-wide">
+    <div class="section-tag reveal">03. Writing</div>
+    <h2 class="reveal">My Substack: Proof of work.</h2>
+    <p class="reveal" style="margin-bottom: 24px;">
+      I write a Substack at the intersection of technology, philosophy, and the human side of
+      building. New posts whenever something feels worth saying.
+    </p>
+
+    <div class="substack-feed reveal" id="substack-feed">
+      <div class="feed-loading">Loading latest posts...</div>
+    </div>
+
+    <div class="substack-footer reveal">
+      <a href="https://kristenforti.substack.com" target="_blank" rel="noopener" class="substack-cta">
+        Read all posts on Substack
+        <span class="arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="work">
+  <div class="wrap-wide">
+    <div class="section-tag reveal">04. Selected work</div>
+    <h2 class="reveal">A career in making things run.</h2>
+
+    <div class="work-item reveal">
+      <div class="work-when">
+        2023 to 2026
+        Stony Hill Stables<br>
+        East Hampton, NY
+      </div>
+      <div>
+        <div class="work-title">Operations Manager</div>
+        <p class="work-desc">
+          Scaled the summer program from $180k to $850k over three seasons,
+          onboarding around 60 new clients a year, managing 200+ active service contracts, and hiring and
+          training a 50+ person seasonal team. Built a referral pipeline that eventually drove 30%+
+          of new acquisition. Salesforce for the CRM side, plenty of AR/AP and contract billing
+          underneath. Averaging workweeks of 60+ hours, with plenty of long days.
+        </p>
+      </div>
+    </div>
+
+    <div class="work-item reveal">
+      <div class="work-when">
+        Sep to Dec 2024
+        Kingsclere Stables<br>
+        Kingsclere, England
+      </div>
+      <div>
+        <div class="work-title">Quality Consultant</div>
+        <p class="work-desc">
+          A 45-day Lean Six Sigma engagement across the pond. Focused on improving efficiency in
+          the day-to-day workflow and delivering a better experience for Kingsclere's clients.
+          Auditing existing processes, writing SOPs, and smoothing out the small inefficiencies
+          that compound over time. Delivered a 14% reduction in daily wasted time and 11% in cost
+          savings.
+        </p>
+      </div>
+    </div>
+
+    <div class="work-item reveal">
+      <div class="work-when">
+        2022 to 2023
+        Plant Engineering Services<br>
+        Fort Wayne, IN
+      </div>
+      <div>
+        <div class="work-title">Junior Systems Engineer</div>
+        <p class="work-desc">
+          My first post-graduate role. Translated messy technical workflows into compliance and
+          governance documentation that Legal, Finance, and Operations all relied on. Improved
+          system uptime by 21%. Learned how to write the kind of documentation that auditors
+          actually read.
+        </p>
+      </div>
+    </div>
+
+    <div class="work-item reveal">
+      <div class="work-when">
+        2021
+        Keri Brion Racing<br>
+        Fair Hill, MD
+      </div>
+      <div>
+        <div class="work-title">Operations Assistant</div>
+        <p class="work-desc">
+          Ran daily operations for a 200-horse string at a barn valued at over $10M. Coordinated
+          international shipping, customs, and welfare compliance across multiple jurisdictions.
+          Led a 22-person team of grooms, riders, and vets. If you can keep a barn that big on
+          schedule and on welfare standard, most logistics afterward feel manageable.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section>
+  <div class="wrap-wide">
+    <div class="section-tag reveal">05. On the shelf</div>
+    <h2 class="reveal">Books that shaped how I think.</h2>
+    <p class="reveal" style="margin-bottom: 40px;">
+      A short list of books I keep returning to. Mostly nonfiction. Roughly in the order they
+      come to mind.
+    </p>
+
+    <div class="books-list">
+      <div class="book-row reveal">
+        <div class="book-num">01</div>
+        <div>
+          <div class="book-title">The Beginning of Infinity</div>
+          <div class="book-author">David Deutsch</div>
+        </div>
+      </div>
+      <div class="book-row reveal">
+        <div class="book-num">02</div>
+        <div>
+          <div class="book-title">Life After Google</div>
+          <div class="book-author">George Gilder</div>
+        </div>
+      </div>
+      <div class="book-row reveal">
+        <div class="book-num">03</div>
+        <div>
+          <div class="book-title">Against the Gods: The Remarkable Story of Risk</div>
+          <div class="book-author">Peter L. Bernstein</div>
+        </div>
+      </div>
+      <div class="book-row reveal">
+        <div class="book-num">04</div>
+        <div>
+          <div class="book-title">The Almanack of Naval Ravikant</div>
+          <div class="book-author">Eric Jorgenson</div>
+        </div>
+      </div>
+      <div class="book-row reveal">
+        <div class="book-num">05</div>
+        <div>
+          <div class="book-title">12 Rules for Life</div>
+          <div class="book-author">Jordan B. Peterson</div>
+        </div>
+      </div>
+      <div class="book-row reveal">
+        <div class="book-num">06</div>
+        <div>
+          <div class="book-title">How Not to Be Wrong: The Power of Mathematical Thinking</div>
+          <div class="book-author">Jordan Ellenberg</div>
+        </div>
+      </div>
+      <div class="book-row reveal">
+        <div class="book-num">07</div>
+        <div>
+          <div class="book-title">When Breath Becomes Air</div>
+          <div class="book-author">Paul Kalanithi</div>
+        </div>
+      </div>
+      <div class="book-row reveal">
+        <div class="book-num">08</div>
+        <div>
+          <div class="book-title">Surprised by Joy</div>
+          <div class="book-author">C.S. Lewis</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div class="section-tag reveal">06. Say hi</div>
+    <h2 class="reveal">
+      If any of this resonates, I'd love to hear from you.
+    </h2>
+    <div class="contact-links reveal">
+      <a href="mailto:kristen.forti01@gmail.com" class="contact-link">
+        <span>Email</span>
+        <span>kristen.forti01@gmail.com</span>
+      </a>
+      <a href="tel:+12606451514" class="contact-link">
+        <span>Phone</span>
+        <span>260 . 645 . 1514</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Made with care. New York, 2026.
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  window.addEventListener('load', () => {
+    document.querySelectorAll('.hero .reveal').forEach((el, i) => {
+      setTimeout(() => el.classList.add('in'), 140 * i);
+    });
+  });
+
+  /* ─── Substack live feed ─── */
+  (async function loadSubstackFeed() {
+    const feedContainer = document.getElementById('substack-feed');
+    if (!feedContainer) return;
+
+    const FEED_URL = 'https://kristenforti.substack.com/feed';
+    const API = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(FEED_URL);
+
+    try {
+      const res = await fetch(API);
+      if (!res.ok) throw new Error('Network error');
+      const data = await res.json();
+      if (data.status !== 'ok' || !data.items || data.items.length === 0) {
+        throw new Error('No posts found');
+      }
+
+      const posts = data.items.slice(0, 3);
+      const html = posts.map(post => {
+        const date = new Date(post.pubDate);
+        const dateStr = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+
+        // Strip HTML tags from snippet, trim length
+        const tmp = document.createElement('div');
+        tmp.innerHTML = post.description || '';
+        const text = (tmp.textContent || tmp.innerText || '').trim();
+        const snippet = text.length > 180 ? text.slice(0, 180).trim() + '...' : text;
+
+        return `
+          <a href="${post.link}" target="_blank" rel="noopener" class="feed-post">
+            <div class="feed-date">${dateStr}</div>
+            <div class="feed-title">${post.title}</div>
+            <div class="feed-snippet">${snippet}</div>
+            <div class="feed-read">Read post <span class="arrow">→</span></div>
+          </a>
+        `;
+      }).join('');
+
+      feedContainer.innerHTML = html;
+    } catch (err) {
+      feedContainer.innerHTML = `
+        <div class="feed-error">
+          Latest posts couldn't load right now. Head over to Substack to read everything.
+        </div>
+      `;
+    }
+  })();
+</script>
+
+</body>
+</html>
